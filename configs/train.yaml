@@ -1,0 +1,10 @@
+# Local Model Training Configurations
+model_type: yolo11n.pt # YOLO version and size
+epochs: 10
+batch_size: 16
+img_size: 640
+device: cpu # cpu, cuda, or mps
+optimizer: SGD
+lr0: 0.01
+momentum: 0.937
+weight_decay: 0.0005

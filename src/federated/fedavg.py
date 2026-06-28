@@ -1,0 +1,3 @@
+"""
+FedAvg aggregation strategy implementation.
+"""

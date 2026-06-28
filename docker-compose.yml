@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  fl-server:
+    build:
+      context: .
+      dockerfile: docker/fl-server/Dockerfile
+    container_name: fl-server
+    ports:
+      - "8080:8080"
+      - "5000:5000" # For MLflow server inside if needed
+    volumes:
+      - ./configs:/app/configs
+      - ./models:/app/models
+      - ./mlruns:/app/mlruns
+    environment:
+      - MLFLOW_TRACKING_URI=http://fl-server:5000
+    networks:
+      - fl-network
+
+  fl-client-1:
+    build:
+      context: .
+      dockerfile: docker/fl-client/Dockerfile
+    container_name: fl-client-1
+    depends_on:
+      - fl-server
+    volumes:
+      - ./configs:/app/configs
+      - ./datasets/clients/client_1:/app/datasets/client
+      - ./models:/app/models
+    environment:
+      - SERVER_ADDRESS=fl-server:8080
+      - CLIENT_ID=1
+    networks:
+      - fl-network
+
+  fl-client-2:
+    build:
+      context: .
+      dockerfile: docker/fl-client/Dockerfile
+    container_name: fl-client-2
+    depends_on:
+      - fl-server
+    volumes:
+      - ./configs:/app/configs
+      - ./datasets/clients/client_2:/app/datasets/client
+      - ./models:/app/models
+    environment:
+      - SERVER_ADDRESS=fl-server:8080
+      - CLIENT_ID=2
+    networks:
+      - fl-network
+
+networks:
+  fl-network:
+    driver: bridge

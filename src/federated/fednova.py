@@ -1,0 +1,3 @@
+"""
+FedNova aggregation strategy implementation.
+"""

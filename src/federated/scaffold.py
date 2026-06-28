@@ -1,0 +1,3 @@
+"""
+SCAFFOLD aggregation strategy implementation.
+"""

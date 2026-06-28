@@ -1,0 +1,3 @@
+"""
+FedProx aggregation strategy implementation.
+"""

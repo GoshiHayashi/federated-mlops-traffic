@@ -1,0 +1,22 @@
+project_name: federated-mlops-traffic
+
+dataset:
+  name: Vehicle Detection
+  classes:
+    - car
+    - bus
+    - truck
+    - motorcycle
+
+model:
+  name: yolov8s
+  image_size: 640
+  batch_size: 16
+  epochs: 50
+
+federated:
+  num_clients: 5
+  rounds: 20
+
+mlflow:
+  experiment: traffic_detection

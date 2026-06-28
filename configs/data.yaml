@@ -1,0 +1,14 @@
+# Data Configurations
+dataset_name: traffic_detection
+raw_data_dir: ./datasets/raw
+processed_data_dir: ./datasets/processed
+clients_data_dir: ./datasets/clients
+
+# Classes
+nc: 4
+names:
+  0: car
+  1: bus
+  2: truck
+  3: motorcycle
+  
